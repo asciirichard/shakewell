@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendWelcomeEmail;
 use App\Models\User;
+use App\Models\Voucher;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class UsersController extends Controller
 {
@@ -25,12 +28,17 @@ class UsersController extends Controller
            'password' => 'required',
         ]);
 
+        $email = $request->input('email');
+
         $user = User::create([
             'first_name' => $request->input('first_name'),
             'username' => $request->input('username'),
-            'email' => $request->input('email'),
+            'email' => $email,
             'password' => bcrypt($request->input('password'))
         ]);
+
+        $voucher = (new Voucher())->createVoucherByUserId($user->id);
+        Mail::to($email)->send(new SendWelcomeEmail($voucher));
 
         return response()->json(['user' => $user]);
 

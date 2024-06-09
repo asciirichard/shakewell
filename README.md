@@ -20,9 +20,13 @@ Database
     - updated_at
 
 Database: /database/database.sqlite
-Mailer: mailtrap
+Mailer: Mailtrap
 Postman: postman.json
 
+Email template grabbed from https://postmarkapp.com/transactional-email-templates/welcome
+
+Additional packages installed
+- Laravel Sanctum
 
 API Endpoints:
 - 

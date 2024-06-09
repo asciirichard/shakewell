@@ -47,9 +47,9 @@ class UsersController extends Controller
     /**
      * Generate a token if the user is authenticated
      * @param Request $request
-     * @return array|JsonResponse
+     * @return JsonResponse
      */
-    public function authenticateUser(Request $request): JsonResponse|array
+    public function authenticateUser(Request $request): JsonResponse
     {
         $credentials = $request->validate([
             'username' => 'required',
@@ -58,7 +58,7 @@ class UsersController extends Controller
 
         if (Auth::attempt($credentials)) {
             $token = $request->user()->createToken($request->input('username'));
-            return ['auth_token' => $token->plainTextToken];
+            return response()->json(['auth_token' => $token->plainTextToken]);
         }
 
         return response()->json(['error' => 'Incorrect credentials'], 401);

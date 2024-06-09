@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "ccebf580-ac71-4a4d-a267-5481a5291388",
+		"name": "Shakewell",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15865989",
+		"_collection_link": "https://solar-meteor-102370.postman.co/workspace/ASCIIDEV~4ce230c5-e1d2-4573-9e79-cbce18d5dfc2/collection/15865989-ccebf580-ac71-4a4d-a267-5481a5291388?action=share&source=collection_link&creator=15865989"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "Test",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "testusername",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "testemail@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "TestPassword",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/user/register",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "testusername",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "TestPassword",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/api/user/authenticate",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout User",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Voucher",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "12|aQkxaLxeMMSnVShhwnmmBROUL7pffXWp4ggAbtJP55f696b0",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

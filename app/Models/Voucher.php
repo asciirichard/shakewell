@@ -18,6 +18,7 @@ class Voucher extends Model
     }
 
     /**
+     * Create a voucher entry in the database
      * @param $userId
      * @return Voucher
      */
@@ -29,6 +30,11 @@ class Voucher extends Model
         ]);
     }
 
+    /**
+     * Generates the alphanumeric voucher code, length defaults to 5
+     * @param $length
+     * @return string
+     */
     public function generateVoucher($length = 5): string
     {
         $string = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

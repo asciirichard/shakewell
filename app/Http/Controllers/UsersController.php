@@ -9,27 +9,6 @@ use Illuminate\Support\Facades\Auth;
 class UsersController extends Controller
 {
 
-
-    /**
-     * Generate a token for the user
-     * @param Request $request
-     * @return array|\Illuminate\Http\JsonResponse
-     */
-    public function createToken(Request $request)
-    {
-        $credentials = $request->validate([
-            'username' => 'required',
-            'password' => 'required'
-        ]);
-
-        if (Auth::attempt($credentials)) {
-            $token = $request->user()->createToken($request->input('username'));
-            return ['token' => $token->plainTextToken];
-        }
-
-        return response()->json(['error' => 'Incorrect credentials'], 401);
-    }
-
     /**
      * Registers a new user
      * @param Request $request
@@ -54,5 +33,25 @@ class UsersController extends Controller
 
         return response()->json(['user' => $user]);
 
+    }
+
+    /**
+     * Generate a token if the user is authenticated
+     * @param Request $request
+     * @return array|\Illuminate\Http\JsonResponse
+     */
+    public function authenticateUser(Request $request)
+    {
+        $credentials = $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $token = $request->user()->createToken($request->input('username'));
+            return ['auth_token' => $token->plainTextToken];
+        }
+
+        return response()->json(['error' => 'Incorrect credentials'], 401);
     }
 }

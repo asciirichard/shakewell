@@ -11,5 +11,5 @@ Route::post('/user/authenticate', [UsersController::class, 'authenticateUser']);
 
 Route::group(['middleware' => 'auth:sanctum'],function() {
     Route::post('/voucher/generate', [VouchersController::class, 'generateVoucher']);
-    Route::post('/user/logout', [UsersController::class, 'logoutUser']);
+    Route::get('/user/logout', [UsersController::class, 'logoutUser']);
 });
